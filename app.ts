@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 dotenv.config();
 const couponRoutes = require('./routes/couponRoutes');
 
@@ -14,6 +15,11 @@ mongoose.connect('mongodb://localhost:27017/coupons', {useNewUrlParser: true, us
 });
 
 const app = express();
+
+// allow cors
+app.use(cors({
+    origin: ['http://pay.tvoysklad.com', 'https://tvoysklad.com', 'localhost:3000']
+}));
 
 // Middleware to parse request bodies
 app.use(express.json());
