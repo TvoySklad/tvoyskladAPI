@@ -18,7 +18,7 @@ const app = express();
 
 // allow cors
 app.use(cors({
-    origin: ['http://pay.tvoysklad.com', 'https://tvoysklad.com', 'http://localhost:3000', 'https://localhost:3000']
+    origin: ['http://pay.tvoysklad.com', 'https://pay.tvoysklad.com', 'http://localhost:3000', 'https://localhost:3000']
 }));
 
 // Middleware to parse request bodies
