@@ -32,10 +32,12 @@ app.use('/coupons', couponRoutes);
 
 app.post('/proxy/register', async (req: Request, res: Response) => {
     try {
+        console.log('Request to /proxy/register:', req.body);
         const response = await axios.post('https://payment.alfabank.ru/payment/rest/register.do', req.body);
-
+        console.log('Response from Alfabank API:', response.data);
         res.status(response.status).send(response.data);
     } catch (error: any) {
+        console.error('Error from Alfabank API:', error.response.data);
         res.status(error.response.status).send(error.response.data);
     }
 });
