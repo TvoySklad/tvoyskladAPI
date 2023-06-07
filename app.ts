@@ -1,13 +1,12 @@
 // app.js
 
 const express = require('express');
-const axios = require('axios');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 dotenv.config();
 const couponRoutes = require('./routes/couponRoutes');
-import { Request, Response } from 'express';
+const proxyRoutes = require('./routes/proxyRoutes');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/coupons', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
@@ -28,26 +27,7 @@ app.use(express.json());
 
 // Routes middleware
 app.use('/coupons', couponRoutes);
-
-app.post('/proxy/register', async (req: Request, res: Response) => {
-    try {
-        const response = await axios.post('https://payment.alfabank.ru/payment/rest/register.do', req.body);
-
-        res.status(response.status).send(response.data);
-    } catch (error: any) {
-        res.status(error.response.status).send(error.response.data);
-    }
-});
-
-app.post('/proxy/check', async (req: Request, res: Response) => {
-    try {
-        const response = await axios.post('https://payment.alfabank.ru/payment/rest/getOrderStatus.do', req.body);
-
-        res.status(response.status).send(response.data);
-    } catch (error: any) {
-        res.status(error.response.status).send(error.response.data);
-    }
-});
+app.use('/proxy', proxyRoutes);
 
 // Start the server
 const port = 3000;
