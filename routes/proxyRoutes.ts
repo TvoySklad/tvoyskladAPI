@@ -6,8 +6,8 @@ const proxyCorsOptions = {
   origin: ['http://pay.tvoysklad.com', 'https://pay.tvoysklad.com', 'http://localhost:3000', 'https://localhost:3000']
 };
 
-router.post('/register', cors(proxyCorsOptions), registerOrder);
+proxyRouter.post('/register', cors(proxyCorsOptions), registerOrder);
 
-router.post('/check', cors(proxyCorsOptions),  checkOrderStatus);
+proxyRouter.post('/check', cors(proxyCorsOptions),  checkOrderStatus);
 
 module.exports = proxyRouter;
