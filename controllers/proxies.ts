@@ -4,7 +4,9 @@ import axios from "axios";
 export const registerOrder = async (req: Request, res: Response): Promise<void> => {
     try {
         console.log(req.query);
-        const response = await axios.post('https://payment.alfabank.ru/payment/rest/register.do', req.query);
+        const response = await axios.post('https://payment.alfabank.ru/payment/rest/register.do', {}, {
+         params: req.query
+        });
         console.log(response.data);
         res.status(response.status).send(response.data);
     } catch (error: any) {
