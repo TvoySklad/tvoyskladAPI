@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import axios from "axios/index";
+import axios from "axios";
 
 export const registerOrder = async (req: Request, res: Response): Promise<void> => {
     try {
