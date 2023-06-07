@@ -5,8 +5,10 @@ export const registerOrder = async (req: Request, res: Response): Promise<void> 
     try {
         console.log(req.query);
         const response = await axios.post('https://payment.alfabank.ru/payment/rest/register.do', req.query);
+        console.log(response.data);
         res.status(response.status).send(response.data);
     } catch (error: any) {
+        console.log(error.response.data);
         res.status(error.response.status).send(error.response.data);
     }
 };
