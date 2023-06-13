@@ -22,7 +22,7 @@ export const checkOrderStatus = async (req: Request, res: Response): Promise<voi
     const axiosConfig: AxiosRequestConfig = {
       params: req.query,
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://pay.tvoysklad.com/'
       }
     };
 
