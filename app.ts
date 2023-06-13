@@ -19,9 +19,7 @@ mongoose.connect('mongodb://localhost:27017/coupons', {useNewUrlParser: true, us
 const app = express();
 
 // allow cors
-app.use(cors({
-    origin: ['http://pay.tvoysklad.com', 'https://pay.tvoysklad.com', 'http://localhost:3000', 'https://localhost:3000']
-}));
+app.use(cors());
 
 // Middleware to parse request bodies
 app.use(express.json());
