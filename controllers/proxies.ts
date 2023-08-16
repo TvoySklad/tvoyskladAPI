@@ -31,7 +31,7 @@ export const checkOrderStatus = async (req: Request, res: Response): Promise<voi
       }
     };
 
-    const response = await axios.post(`${req.query.requestLink}/getOrderStatus.do`, {}, axiosConfig);
+    const response = await axios.post(`${req.query.link}/getOrderStatus.do`, {}, axiosConfig);
     console.log(response);
     res.status(response.status).send(response.data);
   } catch (error: any) {
