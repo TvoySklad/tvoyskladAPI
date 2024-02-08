@@ -7,6 +7,7 @@ export const getCoupon = async (req: Request, res: Response): Promise<void> => {
         if (coupon) {
             if (coupon.isUsed) {
                 res.status(400).json({ error: 'Промокод уже был использован' });
+                return;
             } else {
                 res.json(coupon);
             }
