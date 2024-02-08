@@ -6,7 +6,7 @@ const {getCoupon, markCouponAsUsed, createCoupon} = require('../controllers/coup
 router.get('/:value', getCoupon);
 
 // Route to patch a coupon when payment is made
-router.patch('/:value', markCouponAsUsed);
+router.patch('/:id', markCouponAsUsed);
 
 router.post('/', createCoupon);
 
