@@ -21,7 +21,7 @@ export const getCoupon = async (req: Request, res: Response): Promise<void> => {
 
 export const markCouponAsUsed = async (req: Request, res: Response): Promise<void> => {
     try {
-        const coupon: any = await Coupon.findOneAndUpdate({ _id: req.params.id }, { isUsed: true });
+        const coupon: any = await Coupon.findByIdAndUpdate(req.params.id, { isUsed: true });
         res.send(coupon);
     } catch (err) {
         console.error(err);
